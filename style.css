@@ -1,61 +1,146 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   background: #fff;
-  color: #222;
+  color: #111;
+  line-height: 1.6;
 }
 
+/* Encabezado */
 header {
-  padding: 30px;
-  text-align: left;
+  padding: 20px;
   border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-start; /* antes estaba "center" */
+  align-items: center;
 }
 
-h1 {
-  font-size: 2rem;
+header h1 {
+  font-size: 1.8rem;
   margin: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left; /* aseguramos que esté a la izquierda */
 }
 
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+/* Bio */
+.bio {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: left;
+  padding-left: 15px;
+  border-left: 3px solid #111; /* línea vertical elegante */
+  font-style: normal;
+}
+
+/* Grid general */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-figure {
+/* --- Cards en home --- */
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 220px; /* altura fija */
+  object-fit: cover; /* recorte para uniformidad */
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08); /* zoom sutil al pasar el ratón */
+}
+
+.card h3 {
   margin: 0;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: left; /* alineado a la izquierda */
 }
 
-img {
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Obras dentro de las series */
+figure img {
   width: 100%;
   height: auto;
   border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-figcaption {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #444;
-  line-height: 1.4;
+figure img:hover {
+  transform: scale(1.02);
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#lightbox.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 footer {
-  padding: 20px;
   text-align: center;
-  border-top: 1px solid #ccc;
+  padding: 20px;
+  border-top: 1px solid #ddd;
   margin-top: 40px;
-}
-
-footer .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-footer span {
   font-size: 0.9rem;
+  color: #555;
 }
